@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Empório da Música</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<style>
+  :root {
+    --ebano: #1c120c;      /* madeira escura */
+    --nogueira: #3b261a;   /* madeira média */
+    --ouro: #c99a3c;       /* latão / cordas */
+    --marfim: #f7f1e6;     /* teclas de piano */
+    --papel: #fffdf8;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Work Sans', system-ui, sans-serif; background: var(--marfim); color: var(--ebano); }
+  .serif { font-family: 'Fraunces', Georgia, serif; }
+  :focus-visible { outline: 2px solid var(--ouro); outline-offset: 2px; }
+
+  /* Hero: faixa de "cordas" como elemento marcante */
+  .hero {
+    background:
+      repeating-linear-gradient(90deg, transparent 0 46px, rgba(201,154,60,.22) 46px 47px),
+      linear-gradient(160deg, var(--ebano), var(--nogueira));
+  }
+
+  /* ===== CHAT WIDGET ===== */
+  #chat-window {
+    transform-origin: bottom right;
+    transition: transform .2s ease, opacity .2s ease;
+  }
+  #chat-window[hidden-state="true"] { transform: scale(.92) translateY(12px); opacity: 0; pointer-events: none; }
+  .msg { max-width: 82%; padding: .6rem .85rem; border-radius: 1rem; font-size: .9rem; line-height: 1.4; }
+  .msg-agent { background: #ece4d3; color: var(--ebano); border-bottom-left-radius: .25rem; align-self: flex-start; }
+  .msg-user  { background: var(--ouro); color: var(--ebano); border-bottom-right-radius: .25rem; align-self: flex-end; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="sticky top-0 z-30 bg-[color:var(--ebano)] text-[color:var(--marfim)] border-b border-[color:var(--ouro)]/40">
+  <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+    <a href="#" class="serif text-xl font-bold">Empório da Música</a>
+    <nav class="hidden sm:flex gap-7 text-sm">
+      <a href="#vitrine" class="hover:text-[color:var(--ouro)]">Guitarras</a>
+      <a href="#vitrine" class="hover:text-[color:var(--ouro)]">Teclas</a>
+      <a href="#vitrine" class="hover:text-[color:var(--ouro)]">Áudio</a>
+      <a href="#contato" class="hover:text-[color:var(--ouro)]">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- ===== HERO ===== -->
+  <section class="hero text-[color:var(--marfim)]">
+    <div class="max-w-6xl mx-auto px-5 py-24 md:py-36">
+      <h1 class="serif text-5xl md:text-7xl font-bold leading-[1.05] max-w-3xl">Sua música começa aqui.</h1>
+      <p class="mt-6 text-lg max-w-xl text-[color:var(--marfim)]/80">Guitarras, teclados e equipamentos de áudio escolhidos por quem toca. Do primeiro acorde ao palco.</p>
+      <a href="#vitrine" class="inline-block mt-9 px-7 py-3 rounded-full bg-[color:var(--ouro)] text-[color:var(--ebano)] font-semibold hover:brightness-110 transition">Ver ofertas</a>
+    </div>
+  </section>
+
+  <!-- ===== VITRINE ===== -->
+  <section id="vitrine" class="max-w-6xl mx-auto px-5 py-20">
+    <h2 class="serif text-3xl md:text-4xl font-bold">Em destaque</h2>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <!-- Cartão de produto (repetido 4x; troque por dados reais depois) -->
+      <article class="bg-[color:var(--papel)] rounded-2xl overflow-hidden border border-[color:var(--ebano)]/10 flex flex-col">
+        <div class="h-40 bg-[color:var(--nogueira)] flex items-center justify-center text-6xl" aria-hidden="true">🎸</div>
+        <div class="p-5 flex flex-col flex-1">
+          <h3 class="serif text-lg font-bold">Guitarra Stratocaster</h3>
+          <p class="text-sm mt-1 text-[color:var(--ebano)]/70">Corpo em alder, captadores single coil.</p>
+          <p class="mt-auto pt-4 font-semibold">R$ 3.290,00</p>
+        </div>
+      </article>
+      <article class="bg-[color:var(--papel)] rounded-2xl overflow-hidden border border-[color:var(--ebano)]/10 flex flex-col">
+        <div class="h-40 bg-[color:var(--nogueira)] flex items-center justify-center text-6xl" aria-hidden="true">🎹</div>
+        <div class="p-5 flex flex-col flex-1">
+          <h3 class="serif text-lg font-bold">Teclado 61 teclas</h3>
+          <p class="text-sm mt-1 text-[color:var(--ebano)]/70">Teclas sensíveis e 500 timbres.</p>
+          <p class="mt-auto pt-4 font-semibold">R$ 1.890,00</p>
+        </div>
+      </article>
+      <article class="bg-[color:var(--papel)] rounded-2xl overflow-hidden border border-[color:var(--ebano)]/10 flex flex-col">
+        <div class="h-40 bg-[color:var(--nogueira)] flex items-center justify-center text-6xl" aria-hidden="true">🎧</div>
+        <div class="p-5 flex flex-col flex-1">
+          <h3 class="serif text-lg font-bold">Fone de estúdio</h3>
+          <p class="text-sm mt-1 text-[color:var(--ebano)]/70">Resposta plana para mixagem fiel.</p>
+          <p class="mt-auto pt-4 font-semibold">R$ 690,00</p>
+        </div>
+      </article>
+      <article class="bg-[color:var(--papel)] rounded-2xl overflow-hidden border border-[color:var(--ebano)]/10 flex flex-col">
+        <div class="h-40 bg-[color:var(--nogueira)] flex items-center justify-center text-6xl" aria-hidden="true">🥁</div>
+        <div class="p-5 flex flex-col flex-1">
+          <h3 class="serif text-lg font-bold">Bateria acústica</h3>
+          <p class="text-sm mt-1 text-[color:var(--ebano)]/70">Kit completo com pratos e banco.</p>
+          <p class="mt-auto pt-4 font-semibold">R$ 4.750,00</p>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer id="contato" class="bg-[color:var(--ebano)] text-[color:var(--marfim)]">
+  <div class="max-w-6xl mx-auto px-5 py-12 grid gap-6 md:grid-cols-2">
+    <div>
+      <p class="serif text-xl font-bold">Empório da Música</p>
+      <p class="mt-3 text-sm text-[color:var(--marfim)]/80">Rua 14 de Maio, 3200 - Centro, Campo Grande - MS</p>
+      <p class="text-sm text-[color:var(--marfim)]/80"><a href="mailto:contato@emporiodamusica.com.br" class="underline">contato@emporiodamusica.com.br</a></p>
+    </div>
+    <p class="text-sm text-[color:var(--marfim)]/60 md:text-right md:self-end">© 2026 Empório da Música. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- ===== CHATBOT WIDGET (fixo, canto inferior direito) ===== -->
+<div id="chat-widget" class="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3">
+
+  <!-- Janela do chat -->
+  <section id="chat-window" hidden-state="false" aria-label="Assistente virtual"
+           class="w-[calc(100vw-2.5rem)] sm:w-96 h-[32rem] max-h-[75vh] bg-[color:var(--papel)] rounded-2xl shadow-2xl border border-[color:var(--ebano)]/15 flex flex-col overflow-hidden">
+
+    <!-- Cabeçalho (clicável para minimizar) -->
+    <header id="chat-header" class="bg-[color:var(--ebano)] text-[color:var(--marfim)] px-4 py-3 flex items-center gap-3 cursor-pointer">
+      <span class="w-9 h-9 rounded-full bg-[color:var(--ouro)] text-[color:var(--ebano)] flex items-center justify-center text-lg" aria-hidden="true">🤖</span>
+      <div class="flex-1 leading-tight">
+        <p class="font-semibold text-sm">Assistente Virtual</p>
+        <p class="text-xs text-[color:var(--marfim)]/60">Empório da Música</p>
+      </div>
+      <button id="chat-minimize" type="button" aria-label="Minimizar chat" class="w-8 h-8 rounded-full hover:bg-white/10 text-xl leading-none">–</button>
+    </header>
+
+    <!-- Área de mensagens -->
+    <div id="chat-messages" class="flex-1 overflow-y-auto p-4 flex flex-col gap-3" aria-live="polite">
+      <div class="msg msg-agent">Olá! Sou o assistente virtual da Empório da Música. Como posso te ajudar hoje?</div>
+    </div>
+
+    <!-- Input -->
+    <form id="chat-form" class="p-3 border-t border-[color:var(--ebano)]/10 flex gap-2">
+      <input id="chat-input" type="text" autocomplete="off" placeholder="Digite sua dúvida..."
+             class="flex-1 rounded-full border border-[color:var(--ebano)]/20 bg-white px-4 py-2 text-sm focus:outline-none focus:border-[color:var(--ouro)]">
+      <button type="submit" aria-label="Enviar mensagem"
+              class="w-10 h-10 rounded-full bg-[color:var(--ouro)] text-[color:var(--ebano)] flex items-center justify-center hover:brightness-110">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+      </button>
+    </form>
+  </section>
+
+  <!-- Botão flutuante (abre/fecha) -->
+  <button id="chat-toggle" type="button" aria-label="Abrir chat" aria-expanded="true"
+          class="w-14 h-14 rounded-full bg-[color:var(--ouro)] text-[color:var(--ebano)] text-2xl shadow-xl hover:brightness-110 flex items-center justify-center">💬</button>
+</div>
+
+<script>
+/* =========================================================
+   CHAT WIDGET — módulo isolado
+   ---------------------------------------------------------
+   Pontos de integração com o backend Python:
+   1) sendToBackend(text)  -> troque o mock por fetch() (API REST)
+                              ou ws.send() (WebSocket).
+   2) addMessage(text, who) -> use para renderizar qualquer
+                              mensagem recebida do servidor.
+   ========================================================= */
+const Chat = (() => {
+  const $ = (id) => document.getElementById(id);
+  const win = $('chat-window'), toggle = $('chat-toggle'), header = $('chat-header');
+  const form = $('chat-form'), input = $('chat-input'), list = $('chat-messages');
+
+  /* --- Abrir / minimizar --- */
+  function setOpen(open) {
+    win.setAttribute('hidden-state', String(!open));
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? '–' : '💬';
+    toggle.setAttribute('aria-label', open ? 'Minimizar chat' : 'Abrir chat');
+    if (open) input.focus();
+  }
+  const isOpen = () => win.getAttribute('hidden-state') === 'false';
+
+  /* --- Renderização de mensagens (who: 'user' | 'agent') --- */
+  function addMessage(text, who) {
+    const el = document.createElement('div');
+    el.className = 'msg ' + (who === 'user' ? 'msg-user' : 'msg-agent');
+    el.textContent = text; // textContent evita injeção de HTML vinda do servidor
+    list.appendChild(el);
+    list.scrollTop = list.scrollHeight;
+    return el;
+  }
+
+  /* --- PONTO DE INTEGRAÇÃO: envio ao backend ---
+     Exemplo com API REST:
+       const r = await fetch('/api/chat', {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify({ message: text })
+       });
+       return (await r.json()).reply;
+     Exemplo com WebSocket: ws.send(text) e chame addMessage(...) no ws.onmessage. */
+  async function sendToBackend(text) {
+    try {
+      const r = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text })
+      });
+      const data = await r.json();
+      return data.reply;
+    } catch (error) {
+      return "Erro na conexão com o servidor. Tente novamente.";
+    }
+  }
+
+  /* --- Envio do formulário --- */
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    addMessage(text, 'user');
+    input.value = '';
+    const typing = addMessage('Digitando...', 'agent');
+    try {
+      typing.textContent = await sendToBackend(text);
+    } catch (err) {
+      typing.textContent = 'Não foi possível enviar sua mensagem. Tente novamente.';
+    }
+    list.scrollTop = list.scrollHeight;
+  });
+
+  /* --- Eventos de abrir/minimizar --- */
+  toggle.addEventListener('click', () => setOpen(!isOpen()));
+  header.addEventListener('click', () => setOpen(false));
+  $('chat-minimize').addEventListener('click', (e) => { e.stopPropagation(); setOpen(false); });
+
+  return { setOpen, addMessage, sendToBackend };
+})();
+</script>
+</body>
+</html>
